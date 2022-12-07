@@ -37,10 +37,10 @@ export function CarCharacteristics({ car }: Props) {
   return (
     <Table>
       <tbody>
-        {rows.map(row => (
-          <tr>
+        {rows.map((row, index) => (
+          <tr key={index}>
             {row.map(({ label, value }) => (
-              <StyledTd>
+              <StyledTd key={value}>
                 <div>
                   <Label>{label}</Label>
                   <Value>{value}</Value>
