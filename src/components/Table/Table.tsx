@@ -8,22 +8,19 @@ import {
   getExpandedRowModel,
   ColumnDef,
   flexRender,
+  Row,
+  VisibilityState,
 } from '@tanstack/react-table';
 
-import { Divider } from '@components/Divider';
-
 import * as Styled from './Table.sc';
-import { Image } from '@pages/CarDetails/CarDetailsModal';
-import { CarDetail } from '@pages/CarDetails/constants';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation } from 'swiper';
-import { DeleteIcon } from '@assets/icons/DeleteIcon';
 
 type Props<T = unknown> = {
   title?: string;
   actionButton?: ReactNode;
   data: T[];
   columns: ColumnDef<T>[];
+  expandableRender?: (row: Row<T>) => ReactNode;
+  columnVisibility?: VisibilityState;
 };
 
 export function Table<T = unknown>({
@@ -31,6 +28,8 @@ export function Table<T = unknown>({
   actionButton,
   data,
   columns,
+  expandableRender,
+  columnVisibility,
 }: Props<T>) {
   const [expanded, setExpanded] = useState<ExpandedState>({});
 
@@ -39,10 +38,7 @@ export function Table<T = unknown>({
     columns,
     state: {
       expanded,
-      columnVisibility: {
-        notes: false,
-        addedPictures: false,
-      },
+      columnVisibility,
     },
     onExpandedChange: setExpanded,
     getCoreRowModel: getCoreRowModel(),
@@ -85,38 +81,7 @@ export function Table<T = unknown>({
                 );
               })}
             </Styled.RowGrid>
-            {row.getIsExpanded() && (
-              <Fragment>
-                <Divider />
-                <Styled.ExpandedContainer>
-                  <div style={{ padding: 24 }}>
-                    <Styled.Subtitle>Added pictures:</Styled.Subtitle>
-                    <div>
-                      <Swiper
-                        spaceBetween={12}
-                        slidesPerView={5}
-                        modules={[Navigation]}
-                        navigation={true}
-                      >
-                        {row
-                          .getValue<CarDetail['addedPictures']>('addedPictures')
-                          ?.map(picture => (
-                            <SwiperSlide key={picture}>
-                              <div>
-                                <Image src={picture} />
-                              </div>
-                            </SwiperSlide>
-                          ))}
-                      </Swiper>
-                    </div>
-                  </div>
-                  <div style={{ padding: 24 }}>
-                    <Styled.Subtitle>Notes</Styled.Subtitle>
-                    {row.getValue('notes')}
-                  </div>
-                </Styled.ExpandedContainer>
-              </Fragment>
-            )}
+            {row.getIsExpanded() && expandableRender?.(row)}
           </Styled.Row>
         ))}
       </Styled.TableContainer>

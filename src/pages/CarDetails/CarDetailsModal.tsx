@@ -4,8 +4,6 @@ import showToast from 'react-hot-toast';
 import styled from 'styled-components';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper';
-import 'swiper/css';
-import 'swiper/css/navigation';
 
 import { Modal, ModalProps } from '@components/Modal';
 import { Button } from '@components/Button';
@@ -17,6 +15,7 @@ import { Textarea } from '@components/Textarea';
 import { IconButton } from '@components/IconButton';
 import { DeleteIcon } from '@assets/icons/DeleteIcon';
 import { Grid } from '@components/Grid';
+import { createImageSrc } from '@services/utils/createImageSrc';
 
 type Props = ModalProps;
 
@@ -102,7 +101,7 @@ export function CarDetailsModal({ isOpen, onClose }: Props) {
           {images?.value?.map((file, index) => (
             <SwiperSlide key={file.name}>
               <ImageWrapper>
-                <Image src={URL.createObjectURL(new Blob([file]))} />
+                <Image src={createImageSrc(file)} />
                 <DeleteImageButton onClick={() => removeImage(index)}>
                   <DeleteIcon />
                 </DeleteImageButton>

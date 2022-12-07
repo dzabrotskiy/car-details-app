@@ -28,3 +28,15 @@ export const CarDetailsColumn = styled.div`
   justify-content: space-between;
   width: 100%;
 `;
+
+export const ExpandedContainer = styled.div`
+  display: grid;
+  grid-template-columns: 3fr 6fr;
+`;
+
+export const Subtitle = styled.div`
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  color: #99a5b1;
+`;
