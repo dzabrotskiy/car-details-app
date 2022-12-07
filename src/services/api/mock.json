@@ -1,0 +1,22 @@
+{
+  "car": {
+    "id": 123456789,
+    "make": "BMW",
+    "model": "3 Series",
+    "trim": "Trim",
+    "year": 2021,
+    "number_plate": "HDXB12345",
+    "fuel_in": "2/8",
+    "fuel_out": "1/8",
+    "odometer_in": 100,
+    "odometer_out": 1200,
+    "color": "black",
+    "engine_size": "2L",
+    "number_of_seats": 5,
+    "number_of_doors": 4,
+    "transmission_type": "automatic",
+    "category": "sedan",
+    "fuel_type": "Petrol",
+    "term": 3
+  }
+}
