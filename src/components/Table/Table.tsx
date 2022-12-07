@@ -71,7 +71,7 @@ export function Table<T = unknown>({
           ))}
         </Styled.Header>
         {table.getRowModel().rows.map(row => (
-          <Styled.Row key={row.id}>
+          <Styled.Row expanded={row.getIsExpanded()} key={row.id}>
             <Styled.RowGrid>
               {row.getVisibleCells().map(cell => {
                 return (

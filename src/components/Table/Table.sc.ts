@@ -36,9 +36,9 @@ export const Header = styled.div`
   margin-bottom: 10px;
 `;
 
-export const Row = styled.div`
+export const Row = styled.div<{ expanded?: boolean }>`
   background: #ffffff;
-  border: 1px solid #dcdde0;
+  border: 1px solid ${props => (props.expanded ? '#7C808E' : '#dcdde0')};
   border-radius: 16px;
   margin-bottom: 16px;
   transition: all 0.2s ease;
