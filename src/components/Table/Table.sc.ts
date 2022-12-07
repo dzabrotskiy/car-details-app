@@ -22,12 +22,13 @@ export const TableContainer = styled.div`
   margin-top: 24px;
 `;
 
-export const Th = styled.th`
+export const TableHeaderCell = styled.div`
   font-weight: 700;
   font-size: 16px;
   line-height: 24px;
   color: #7c808e;
   padding: 0 24px;
+  text-align: center;
 `;
 
 export const Header = styled.div`

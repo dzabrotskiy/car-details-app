@@ -8,16 +8,16 @@ import { Card } from '@components/Card';
 import { Spacer } from '@components/Spacer';
 import { getCarDetails } from '@services/api';
 import bmwImage from '@assets/images/bmw.png';
-import { CarCharacteristics } from '@pages/CarDetails/CarCharacteristics';
-import { CarDetailsTable } from '@pages/CarDetails/CarDetailsTable';
+import { CarCharacteristics } from '@widgets/CarCharacteristics';
+import { CarDetailsTable } from '@widgets/CarDetailsTable';
 import { Table } from '@components/Table';
 import { Button } from '@components/Button';
-import { CarDetailsModal, Image } from '@pages/CarDetails/CarDetailsModal';
+import { CarDetailsModal, Image } from '@widgets/CarDetailsModal';
+import { Divider } from '@components/Divider';
+import { useCarDetailsTableColumns } from '@hooks/useCarDetailsTableColumns';
 
 import * as Styled from './CarDetails.sc';
 import { CarDetail, carsDetails } from './constants';
-import { useCarDetailsTableColumns } from './useCarDetailsTableColumns';
-import { Divider } from '@components/Divider';
 
 export function CarDetails() {
   const [car, setCar] = useState<Car>();

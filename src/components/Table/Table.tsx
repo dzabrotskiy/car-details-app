@@ -58,14 +58,14 @@ export function Table<T = unknown>({
           {table.getHeaderGroups().map(headerGroup => (
             <Fragment key={headerGroup.id}>
               {headerGroup.headers.map(header => (
-                <Styled.Th key={header.id} colSpan={header.colSpan}>
+                <Styled.TableHeaderCell key={header.id}>
                   <div>
                     {flexRender(
                       header.column.columnDef.header,
                       header.getContext(),
                     )}
                   </div>
-                </Styled.Th>
+                </Styled.TableHeaderCell>
               ))}
             </Fragment>
           ))}
